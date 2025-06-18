@@ -1,0 +1,24 @@
+{
+  "name": "charlie",
+  "version": "1.0.0",
+  "description": "everything JavaScript",
+  "main": "arrays.js",
+  "scripts": {
+    "fr": "npx @tailwindcss/cli -i ./input.css -o ./output.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderitec/charlie-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coderitec/charlie-js/issues"
+  },
+  "homepage": "https://github.com/coderitec/charlie-js#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.10",
+    "tailwindcss": "^4.1.10"
+  }
+}

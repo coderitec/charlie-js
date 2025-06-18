@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>digital clock</title>
+    <link rel="stylesheet" href="./output.css">
+</head>
+<body>
+    <main class="h-screen flex justify-center items-center flex-col gap-4 bg-slate-950 text-white">
+        <h1 class="text-5xl font-bold uppercase">Digital Clock</h1>
+        <div class="text-6xl font-mono w-3/4 h-64 bg-orange-500 grid grid-cols-5 px-4 gap-4" id="clock">
+            <div class="card">
+                <span>03</span>
+                <span>hr</span>
+            </div>
+            <div class="card">
+                <span>46</span>
+                <span>mins</span>
+            </div>
+            <div class="card">
+                <span>55</span>
+                <span>sec</span>
+            </div>
+            <div class="card">
+                <span>55</span>
+                <span>millisecond</span>
+            </div>
+            <div class="self-center ">
+                <span>pm/am</span>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0') > 12 ? String(now.getHours() - 12).padStart(2, '0') : String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        const milliseconds = String(now.getMilliseconds()).padStart(3, '0');
+        const ampm = now.getHours() >= 12 ? 'pm' : 'am';
+
+        const times = document.querySelectorAll('div > div > span:first-of-type');
+
+        times[0].textContent = hours;
+        times[1].textContent = minutes;
+        times[2].textContent = seconds;
+        times[3].textContent = milliseconds;
+        times[4].textContent = ampm;
+    }
+
+    setInterval(updateClock, 50);
+    updateClock(); // Initial call to set the clock immediately
+
+    </script>
+</html>

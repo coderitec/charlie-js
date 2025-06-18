@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bmi calculator</title>
+    <link rel="stylesheet" href="./output.css">
+</head>
+<body>
+    <main class="h-screen flex justify-center items-center flex-col gap-4 bg-slate-950 text-white">
+        <h1 class="text-5xl font-bold uppercase"><abbr title="Body Mass Index">BMI</abbr> Calculator</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl">
+
+            <section>
+                <ul class="flex flex-col gap-4">
+                    <li>
+                        <input type="number" name="weight" id="weight" placeholder="Enter weight in kg"
+                        class="mb-2 w-full  outline-none border-4 border-slate-50 px-3 py-3 rounded-full"  min="1" max="500"  step="0.1"
+                        required>
+                    </li>
+                    <li>
+                        <input type="number" name="height" id="height" placeholder="Enter height in cm" 
+                        class="mb-2 w-full outline-none border-4 border-slate-50 px-3 py-3 rounded-full"  min="1" max="500"  step="0.1"
+                        required>
+                    </li>
+                    
+                    <li>
+                        <button type="button" id="calculate"
+                        class="bg-slate-50 text-slate-950 transition rounded-full hover:font-bold w-full py-3 cursor-pointer">Calculate BMI</button>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <p id="result"></p>
+                <p id="category"></p>
+                <p id="recommend"></p>
+            </section>
+        </div>
+    </main>
+</body>
+<!-- <script>
+    const score1 = 40
+    const score2 = 'seventy' 
+
+
+if(score1 <= 100 && score2 <= 100) {
+
+    if(score1 >= 50 && score2 >= 50)
+        alert("Exam passed!");
+    
+    else if(score1 >= 50 || score2 >= 50)
+    alert(`Exam passed with a reseat condition!. you are to reseat ${score1 < score2 ? "score1" : "score2"} examination`);
+
+    else
+    alert("Exam failed 😫");
+}
+else {
+    alert("Invalid scores! Scores must be between 0 and 100.");
+}
+    
+</script> -->
+
+<script>
+    const inputs = document.querySelectorAll('input');
+    const btn = document.querySelector('button')
+    const outputs = document.querySelectorAll('p');
+
+    function handleBMICalculation(){
+        const weight = inputs[0].value
+        const height = inputs[1].value / 100 
+        const bmi = (weight / (Math.pow(height,2))).toFixed(2)
+
+        outputs[0].innerHTML = `<strong>Result:</strong> ${bmi}<span> kg/m<sup>2</sup</span>`
+
+        outputs[1].innerHTML = `<strong>Category:</strong> ${bmi < 18.5 ? "Underweight" : bmi < 24.9 ? "Normal weight" : bmi < 29.9 ? "Overweight" : "Obesity"}`
+
+        outputs[2].innerHTML = `<strong>Recommendation:</strong> ${bmi < 18.5 ? "Eat more nutritious food and more carbs." : bmi < 24.9 ? "Maintain your current lifestyle." : bmi < 29.9 ? "Consider a balanced diet and regular exercise." : "Seek medical advice for weight management."}`
+
+        inputs.forEach(input => input.value = '')
+    }
+
+    btn.addEventListener('click', handleBMICalculation)
+</script>
+</html>
